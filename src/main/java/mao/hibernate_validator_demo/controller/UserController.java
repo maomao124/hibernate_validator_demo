@@ -4,6 +4,7 @@ import mao.hibernate_validator_demo.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,14 +31,14 @@ public class UserController
 {
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-    @RequestMapping("/delete")
+    @GetMapping("/delete")
     public String delete(@NotBlank(message = "id不能为空") String id)
     {
         log.info("delete..." + id);
         return "OK";
     }
 
-    @RequestMapping("/save")
+    @GetMapping("/save")
     public String save(@Validated @RequestBody User user)
     {
         log.info("save..." + user);
